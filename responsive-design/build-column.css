@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+}
+[class*="cl-"] {
+    float: left;
+}
+/* Extra small device */
+    .cl-xs-1 { width: 8.33%;}
+    .cl-xs-2 { width: 16.66%;}
+    .cl-xs-3 { width: 25%;}
+    .cl-xs-4 { width: 33.33%;}
+    .cl-xs-5 { width: 41.66%;}
+    .cl-xs-6 { width: 50%;}
+    .cl-xs-7 { width: 58.33%;}
+    .cl-xs-8 { width: 66.66%;}
+    .cl-xs-9 { width: 75%;}
+    .cl-xs-10 { width: 83.33%;}
+    .cl-xs-11 { width: 91.66%;}
+    .cl-xs-12 { width: 100%;}
+
+/* Small device */
+@media (min-width: 576px) {
+    .cl-sm-1 { width: 8.33%;}
+    .cl-sm-2 { width: 16.66%;}
+    .cl-sm-3 { width: 25%;}
+    .cl-sm-4 { width: 33.33%;}
+    .cl-sm-5 { width: 41.66%;}
+    .cl-sm-6 { width: 50%;}
+    .cl-sm-7 { width: 58.33%;}
+    .cl-sm-8 { width: 66.66%;}
+    .cl-sm-9 { width: 75%;}
+    .cl-sm-10 { width: 83.33%;}
+    .cl-sm-11 { width: 91.66%;}
+    .cl-sm-12 { width: 100%;}
+}
+
+/* Medium device */
+@media (min-width: 768px) {
+    .cl-md-1 { width: 8.33%;}
+    .cl-md-2 { width: 16.66%;}
+    .cl-md-3 { width: 25%;}
+    .cl-md-4 { width: 33.33%;}
+    .cl-md-5 { width: 41.66%;}
+    .cl-md-6 { width: 50%;}
+    .cl-md-7 { width: 58.33%;}
+    .cl-md-8 { width: 66.66%;}
+    .cl-md-9 { width: 75%;}
+    .cl-md-10 { width: 83.33%;}
+    .cl-md-11 { width: 91.66%;}
+    .cl-md-12 { width: 100%;}
+}
+
+/* Large device */
+@media (min-width: 992px) {
+    .cl-lg-1 { width: 8.33%;}
+    .cl-lg-2 { width: 16.66%;}
+    .cl-lg-3 { width: 25%;}
+    .cl-lg-4 { width: 33.33%;}
+    .cl-lg-5 { width: 41.66%;}
+    .cl-lg-6 { width: 50%;}
+    .cl-lg-7 { width: 58.33%;}
+    .cl-lg-8 { width: 66.66%;}
+    .cl-lg-9 { width: 75%;}
+    .cl-lg-10 { width: 83.33%;}
+    .cl-lg-11 { width: 91.66%;}
+    .cl-lg-12 { width: 100%;}
+}
+
+/* Extra large device  */
+@media (min-width: 1200px) {
+    .cl-xl-1 { width: 8.33%;}
+    .cl-xl-2 { width: 16.66%;}
+    .cl-xl-3 { width: 25%;}
+    .cl-xl-4 { width: 33.33%;}
+    .cl-xl-5 { width: 41.66%;}
+    .cl-xl-6 { width: 50%;}
+    .cl-xl-7 { width: 58.33%;}
+    .cl-xl-8 { width: 66.66%;}
+    .cl-xl-9 { width: 75%;}
+    .cl-xl-10 { width: 83.33%;}
+    .cl-xl-11 { width: 91.66%;}
+    .cl-xl-12 { width: 100%;}
+}

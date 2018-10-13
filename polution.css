@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: #e8ffc4;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+.header, .container, .footer {
+    display: block;
+}
+.header, .footer {
+    background: #185bff;
+    height: 70px;
+    width: 100%;
+}
+.container {
+    z-index: 1;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+.maps, .interact-user {
+    z-index: 1;
+    position: relative;
+    height: 100%;
+}
+.interact-user {
+    background: #99e8c4;
+    padding: 15px;
+}
+input[type=text] {
+    border-radius: 10px;
+    position: relative;
+    padding: 12px 20px;
+    display: inline-block;
+    border: none;
+    background: white;
+}
+button {
+    background-color: #ffe36a;
+    color: white;
+    padding: 5px 20px;
+    width: 100%;
+    margin-bottom: 0px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+.info-bar {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+.property {
+    display: inline-block;
+    max-width: 100%;
+    font-weight: 700;
+    padding: 6px;
+}
+.user-input {
+    border-radius: 10px;
+    position: relative;
+    padding: 12px 20px;
+    display: inline-block;
+    border: none;
+    background: white;
+}
+#user-description {
+    height: 200px;
+}
+.report-container {
+    margin-top: 15px;
+}
+.user-report {
+    display: block;
+    height: auto;
+    background: #fff;
+}
+.user-info {
+    
+}
+.avatar {
+    padding-top: 1%;
+    height: 30px;
+    color: #000;
+}
