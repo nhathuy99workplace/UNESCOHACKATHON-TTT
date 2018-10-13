@@ -2,8 +2,8 @@ var http = require("http");
 var fs = require('fs');
 var path = require('path');
 var crypto = require("crypto");
-var crud = require('./databaseCRUD');
-var utilities = require('./utilities');
+var crud = require('../utilities/databaseCRUD');
+var utilities = require('../utilities/utilities');
 
 function saveComment(request, response, locationArray) {
     utilities.collectDataFromPost(request, result => {
@@ -28,12 +28,11 @@ function saveComment(request, response, locationArray) {
 
 
 function checkTokenHandler(request, response) {
-    // don't read 1 time at beginning because accounts can change
     crud.readDatabase("account", function(accountArray) { 
         checkToken(request, response, accountArray);
     });
 }
 
 module.exports = {
-    getLocation: getLocation
+    saveComment: saveComment
 }
