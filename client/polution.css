@@ -2,6 +2,7 @@
     box-sizing: border-box;
 }
 body {
+    overflow: hidden;
     background-color: #e8ffc4;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
@@ -30,6 +31,7 @@ body {
     height: 100%;
 }
 .interact-user {
+    /* max-width: 360px; */
     background: #99e8c4;
     padding: 15px;
 }
@@ -83,13 +85,48 @@ button {
 .user-report {
     display: block;
     height: auto;
-    background: #fff;
+    background: transparent;
 }
-.user-info {
-    
-}
+
 .avatar {
     padding-top: 1%;
     height: 30px;
     color: #000;
 }
+
+.maps {
+    z-index: 1 !important;
+}
+
+#pac-input { 
+    z-index: 2 !important;
+    position: fixed !important;
+    right: 0 !important;
+    /* left:80% !important; */
+    top: 8% !important;
+    width: 30%;
+}
+
+
+#map {
+    height: 93%;
+    width: auto;
+}
+
+.description {
+    display: block;
+    height: 15px;
+    overflow-y: auto;
+    background: transparent;
+}
+
+#comment { 
+    margin-top: 15px;
+    position: relative;
+    padding: 12px 20px;
+    display: block;
+    border: none;
+    background: white;
+    border-radius: 0;
+}
+
