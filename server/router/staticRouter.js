@@ -6,7 +6,7 @@ __dirname = path.join(__dirname, '../../')
 
 var routeFile = [
     {   routeUrl: "/",
-        routeFileName: "/client/polution.html"},
+        routeFileName: "/client/map.html"},
 ];
 
 module.exports = function fileRouter(url, request, response) {
