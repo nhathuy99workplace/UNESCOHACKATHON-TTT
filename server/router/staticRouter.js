@@ -1,6 +1,6 @@
 var utilities = require("../utilities/utilities");
 var path = require('path');
-
+var serve = require("../controller/staticController");
 __dirname = path.join(__dirname, '../../')
 
 var routeFile = [

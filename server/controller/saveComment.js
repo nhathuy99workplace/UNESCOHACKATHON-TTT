@@ -7,36 +7,40 @@ var utilities = require('../utilities/utilities');
 
 function saveComment(request, response, locationArray) {
     utilities.collectDataFromPost(request, result => {
-        var position = -1;
+        console.log(result);
+        var check = false;
+        debugger;
         for (var i in locationArray) {
             var currentCommentQuantity = locationArray[i].commentQuantity;
             var currentLatitude = locationArray[i].center.lat;
             var currentLongtitude = locationArray[i].center.lng;
             var currentDistance = utilities.distanceInKmBetweenEarthCoordinates(result.center.lat, result.center.lng, currentLatitude, currentLongtitude);
+            debugger;
             if (currentDistance <= 0.2) {
-                locationArray[i].commentArray.push(result.comment);
+                locationArray[i].comment.push(result.comment);
                 locationArray[i].commentQuantity++;
-                break;
+                crud.updateOneDocument("marker",{_id:locationArray[i]._id},locationArray[i]);
+                check=true;
             }
         }
-        crud.createDocument("location", newLocation, () => {
-            newLocation.commentArray.push(result.comment);
-        });
-        if (locationArray[i].commentQuantity!=currentCommentQuantity) {
-            response.end("save comment success");
+        utilities.setResponseHeader(response);
+        if (check == false) {
+            var newItem={};
+            newItem.center=result.center;
+            newItem.comment=[];
+            debugger;
+            newItem.comment.push(result.comment);
+            newItem.commentQuantity=1;
+            crud.createDocument("marker",newItem);
         }
-        else {
-            response.end("Fail!")
-        }
+        response.end("pk");
     });
 }
 function saveCommentHandler(request, response) {
-    crud.readDatabase("location", function(locationArray) { 
+    crud.readDatabase("marker", function(locationArray) { 
         saveComment(request, response, locationArray);
     });
 }
-
-
 
 module.exports = {
     saveCommentHandler: saveCommentHandler

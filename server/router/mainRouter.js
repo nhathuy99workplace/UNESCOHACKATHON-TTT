@@ -1,16 +1,22 @@
-var getData = require("../controller/getMarker")
+var getProduct = require("../controller/getMarker")
 var errorHandler = require("../errorHandler/controllerError");
 var saveComment = require("../controller/saveComment");
 
+// function defaultHandler(response) {
+//     response.statusCode = 404;
+//     response.setHeader('Content-Type', 'text/plain');
+//     response.end('No Page found\n');
+// }
+
 module.exports = function mainRouter(url, method, request, response, check404) {
     var route = [{
-        routeUrl:"/get-data",
+        routeUrl:"/products",
         routeMethod:"GET",
-        routeHandler:getData
-    }, {
-        routeUrl: "/save-comment",
+        routeHandler:getProduct
+    },{
+        routeUrl:"/save-comment",
         routeMethod:"POST",
-        routeHandler: saveComment.saveCommentHandler
+        routeHandler:saveComment.saveCommentHandler
     }];
     var routeId = route.findIndex(item => item.routeUrl === url);
     if (routeId == -1) {
