@@ -1,11 +1,16 @@
 var getData = require("../controller/getMarker")
 var errorHandler = require("../errorHandler/controllerError");
+var saveComment = require("../controller/saveComment");
 
 module.exports = function mainRouter(url, method, request, response, check404) {
     var route = [{
         routeUrl:"/get-data",
         routeMethod:"GET",
         routeHandler:getData
+    }, {
+        routeUrl: "/save-comment",
+        routeMethod:"POST",
+        routeHandler: saveComment.saveCommentHandler
     }];
     var routeId = route.findIndex(item => item.routeUrl === url);
     if (routeId == -1) {

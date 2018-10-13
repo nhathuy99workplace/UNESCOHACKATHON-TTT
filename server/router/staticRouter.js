@@ -1,4 +1,3 @@
-var serve = require("../controller/staticController");
 var utilities = require("../utilities/utilities");
 var path = require('path');
 

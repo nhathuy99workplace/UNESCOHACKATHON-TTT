@@ -47,8 +47,32 @@ function authenticateFileName(filename) {
     return false;
 }
 
+function modifyFileName(filename) {
+    if (authenticateFileName(filename)) {
+      return validateFileName(filename) 
+    } else {
+        return false;
+    }
+}
+function degreesToRadians(degrees) {
+    return degrees * Math.PI / 180;
+}
+  
+function distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2) {
+    var dLat = degreesToRadians(lat2-lat1);
+    var dLon = degreesToRadians(lon2-lon1);
+  
+    lat1 = degreesToRadians(lat1);
+    lat2 = degreesToRadians(lat2);
+  
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    return c;
+}
 module.exports = {
     findValidUserPosition: findValidUserPosition,
     collectDataFromPost: collectDataFromPost,
     setResponseHeader: setResponseHeader,
+    distanceInKmBetweenEarthCoordinates: distanceInKmBetweenEarthCoordinates
 }
