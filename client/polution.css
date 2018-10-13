@@ -113,9 +113,9 @@ button {
     width: auto;
 }
 
-.description {
+#description {
     display: block;
-    height: 15px;
+    height: 55%;
     overflow-y: auto;
     background: transparent;
 }
@@ -128,5 +128,6 @@ button {
     border: none;
     background: white;
     border-radius: 0;
+    word-wrap: break-word;
 }
 

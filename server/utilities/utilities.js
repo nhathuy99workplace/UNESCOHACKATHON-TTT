@@ -4,14 +4,14 @@ var fs = require('fs');
 var path = require('path');
 var crud = require('../utilities/databaseCRUD');
 
-function findValidUserPosition(accountList, user) {
-    for (var i in accountList) {
-        if (accountList[i].user == user.user && accountList[i].password == user.password) {
-            return i;
-        }
-    }
-    return -1;
-}
+// function findValidUserPosition(accountList, user) {
+//     for (var i in accountList) {
+//         if (accountList[i].user == user.user && accountList[i].password == user.password) {
+//             return i;
+//         }
+//     }
+//     return -1;
+// }
 function collectDataFromPost(request, callback) {
     let body = '';
     // collect data
@@ -36,24 +36,6 @@ function setResponseHeader(response) {
     response.setHeader('Access-Control-Allow-Origin', '*');
 }
 
-function validateFileName(filename) {
-    return filename.replace(/[^a-zA-Z0-9.]/gi, "");
-}
-  
-function authenticateFileName(filename) {
-    if (filename.match("\.png$") || filename.match("\.jpg$") || filename.match("\jpeg$")) {
-      return true;
-    }
-    return false;
-}
-
-function modifyFileName(filename) {
-    if (authenticateFileName(filename)) {
-      return validateFileName(filename) 
-    } else {
-        return false;
-    }
-}
 function degreesToRadians(degrees) {
     return degrees * Math.PI / 180;
 }
@@ -71,7 +53,7 @@ function distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2) {
     return c*6371;
 }
 module.exports = {
-    findValidUserPosition: findValidUserPosition,
+    // findValidUserPosition: findValidUserPosition,
     collectDataFromPost: collectDataFromPost,
     setResponseHeader: setResponseHeader,
     distanceInKmBetweenEarthCoordinates: distanceInKmBetweenEarthCoordinates

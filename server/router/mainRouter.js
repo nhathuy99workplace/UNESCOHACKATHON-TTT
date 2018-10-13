@@ -1,4 +1,4 @@
-var getProduct = require("../controller/getMarker")
+var getMarker = require("../controller/getMarker")
 var errorHandler = require("../errorHandler/controllerError");
 var saveComment = require("../controller/saveComment");
 
@@ -10,11 +10,11 @@ var saveComment = require("../controller/saveComment");
 
 module.exports = function mainRouter(url, method, request, response, check404) {
     var route = [{
-        routeUrl:"/products",
+        routeUrl:"/get-data",
         routeMethod:"GET",
-        routeHandler:getProduct
+        routeHandler:getMarker
     },{
-        routeUrl:"/save-comment",
+        routeUrl:"/send-comment",
         routeMethod:"POST",
         routeHandler:saveComment.saveCommentHandler
     }];

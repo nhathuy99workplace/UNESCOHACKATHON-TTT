@@ -32,7 +32,7 @@ function delComment(id){
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 41.878, lng: -87.629},
+        center: {lat: 10.7624165, lng: 106.6812013},
         zoom: 13
     });
     for (var city in citymap) {
@@ -41,7 +41,7 @@ function initMap() {
           strokeOpacity: 0.8,
           strokeWeight: 2,
           fillColor: '#FF0000',
-          fillOpacity: callOpa(citymap[city].population),
+          fillOpacity: callOpa(citymap[city].commentQuantity),
           title: citymap[city].comment,
           map: map,
           center: citymap[city].center,
@@ -129,6 +129,27 @@ function getData() {
     }
 }
 
+function sendComment() {
+    var http = new XMLHttpRequest();
+    var obj = {};
+    obj.center = currentMark;
+    obj.comment = document.getElementById("user-description").value; 
+    if (!currentMark.lat || obj.comment == '') {
+        alert("Input fields must not be blank");
+        return;
+    }
+    
+    http.open("POST", "http://127.0.0.1:3000/send-comment", true);
+    http.send(JSON.stringify(obj));
+    http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200){
+            console.log("Success");
+            location.reload();
+        }
+    }
+}
+
+document.getElementById("submit-report").addEventListener("click", sendComment);
 
 
 
