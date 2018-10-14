@@ -135,7 +135,7 @@ function afterRead() {
 
 function getData() {
     var http = new XMLHttpRequest();
-    http.open("GET", "http://127.0.0.1:3000/get-data", true);
+    http.open("GET", "http://6aa0da9e.ngrok.io/get-data", true);
     http.send();
     http.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200){
@@ -156,7 +156,7 @@ function sendComment() {
         return;
     }
     
-    http.open("POST", "http://127.0.0.1:3000/send-comment", true);
+    http.open("POST", "http://6aa0da9e.ngrok.io/send-comment", true);
     http.send(JSON.stringify(obj));
     http.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200){
