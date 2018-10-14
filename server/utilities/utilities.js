@@ -1,24 +1,15 @@
-//Function findUserPosition:
 var http = require("http");
 var fs = require('fs');
 var path = require('path');
 var crud = require('../utilities/databaseCRUD');
 
-// function findValidUserPosition(accountList, user) {
-//     for (var i in accountList) {
-//         if (accountList[i].user == user.user && accountList[i].password == user.password) {
-//             return i;
-//         }
-//     }
-//     return -1;
-// }
+//Collect data from POST request
 function collectDataFromPost(request, callback) {
     let body = '';
-    // collect data
     request.on('data', chunk => {
         body += chunk.toString();
     });
-    //collect done
+    //Collect done
     request.on('end', () => {
         try {
             body = JSON.parse(body);
@@ -30,16 +21,19 @@ function collectDataFromPost(request, callback) {
     });
 }
 
+//Set response header for responses
 function setResponseHeader(response) {
     response.statusCode = 200;
     response.setHeader('Content-type', 'application/json');
     response.setHeader('Access-Control-Allow-Origin', '*');
 }
 
+//Tranfer degrees to radians
 function degreesToRadians(degrees) {
     return degrees * Math.PI / 180;
 }
-  
+
+//Calculate the distance between two points
 function distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2) {
     var dLat = degreesToRadians(lat2-lat1);
     var dLon = degreesToRadians(lon2-lon1);
@@ -50,10 +44,11 @@ function distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2) {
     var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
             Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+
     return c*6371;
 }
+
 module.exports = {
-    // findValidUserPosition: findValidUserPosition,
     collectDataFromPost: collectDataFromPost,
     setResponseHeader: setResponseHeader,
     distanceInKmBetweenEarthCoordinates: distanceInKmBetweenEarthCoordinates

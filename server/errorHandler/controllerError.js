@@ -1,6 +1,5 @@
 module.exports = function(error,response) {
     console.log(error);
-    debugger;
     var errorList = [
         {statusCode: 400, message: "Wrong Data Input"},
         {statusCode: 401, message: "Authentication Error"},
