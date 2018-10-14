@@ -1,5 +1,12 @@
 var map;
-var currentMark = {};
+var currentMark;
+debugger
+if (localStorage.getItem("currentMark")) {
+    currentMark = JSON.parse(localStorage.getItem("currentMark"))[0];
+} 
+else {
+    currentMark = {lat: 10.7624165, lng: 106.6812013};
+}
 var citymap;
 
 getData();
@@ -32,7 +39,7 @@ function delComment(id) {
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 10.7624165, lng: 106.6812013},
+        center: currentMark,
         zoom: 13
     });
     
@@ -76,6 +83,9 @@ function initMap() {
             };
             currentMark.lat = place.geometry.location.lat();
             currentMark.lng = place.geometry.location.lng();
+            var obj = []
+            obj.push(currentMark);
+            localStorage.setItem("currentMark", JSON.stringify(obj));
                 // Create a marker for each place.
             markers.push(new google.maps.Marker({
                 map: map,
@@ -112,10 +122,13 @@ function afterRead() {
         cityCircle.addListener("click", function() {
             var listComment = this.get("title");
             delComment("description");
-            
             for (var i in listComment) {
                 addComment(listComment[i], "description");
             }
+            currentMark = this.center; 
+            var obj = []
+            obj.push(currentMark);
+            localStorage.setItem("currentMark", JSON.stringify(obj));
         });
     }
 }
