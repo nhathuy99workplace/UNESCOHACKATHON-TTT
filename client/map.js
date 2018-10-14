@@ -1,16 +1,24 @@
 var map;
-var currentMark = {};
+var currentMark;
+debugger
+if (localStorage.getItem("currentMark")) {
+    currentMark = JSON.parse(localStorage.getItem("currentMark"))[0];
+} 
+else {
+    currentMark = {lat: 10.7624165, lng: 106.6812013};
+}
 var citymap;
 
 getData();
-function callOpa(n){
-    if (n*0.1 > 0.9) {
+
+function callOpa(n) {
+    if (n * 0.1 > 0.9) {
         return 0.9;
     } 
-    else return n*0.1;
+    else return n * 0.1;
 }
 
-function addComment(comment,id){
+function addComment(comment,id) {
     var commentBox = document.getElementById(id);
     var newComment= document.createElement('label');
     newComment.setAttribute("id", "comment");
@@ -21,41 +29,20 @@ function addComment(comment,id){
     commentBox.appendChild(newComment);
 }
 
-function delComment(id){
+function delComment(id) {
     var theList = document.getElementById(id);
-    debugger
     if (theList == null) return;
-    while (theList.hasChildNodes()){
+    while (theList.hasChildNodes()) {
         theList.removeChild(theList.lastChild);
     }
 }
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 10.7624165, lng: 106.6812013},
+        center: currentMark,
         zoom: 13
     });
-    for (var city in citymap) {
-        var cityCircle = new google.maps.Circle({
-          strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
-          strokeWeight: 2,
-          fillColor: '#FF0000',
-          fillOpacity: callOpa(citymap[city].commentQuantity),
-          title: citymap[city].comment,
-          map: map,
-          center: citymap[city].center,
-          radius: 200
-        });
-        cityCircle.addListener("click",function(){
-            var listComment = this.get("title");
-            delComment("description");
-            
-            for (var i in listComment) {
-                addComment(listComment[i], "description");
-            }
-        });
-    }
+    
     var input = document.getElementById('pac-input');   
     var searchBox = new google.maps.places.SearchBox(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
@@ -96,6 +83,9 @@ function initMap() {
             };
             currentMark.lat = place.geometry.location.lat();
             currentMark.lng = place.geometry.location.lng();
+            var obj = []
+            obj.push(currentMark);
+            localStorage.setItem("currentMark", JSON.stringify(obj));
                 // Create a marker for each place.
             markers.push(new google.maps.Marker({
                 map: map,
@@ -116,6 +106,33 @@ function initMap() {
 
 }
 
+function afterRead() {
+    for (var city in citymap) {
+        var cityCircle = new google.maps.Circle ({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: callOpa(citymap[city].commentQuantity),
+            title: citymap[city].comment,
+            map: map,
+            center: citymap[city].center,
+            radius: 200
+        });
+        cityCircle.addListener("click", function() {
+            var listComment = this.get("title");
+            delComment("description");
+            for (var i in listComment) {
+                addComment(listComment[i], "description");
+            }
+            currentMark = this.center; 
+            var obj = []
+            obj.push(currentMark);
+            localStorage.setItem("currentMark", JSON.stringify(obj));
+        });
+    }
+}
+
 function getData() {
     var http = new XMLHttpRequest();
     http.open("GET", "http://127.0.0.1:3000/get-data", true);
@@ -123,8 +140,8 @@ function getData() {
     http.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200){
             var result = JSON.parse(this.response);
-            citymap =result;
-            // console.log(citymap);
+            citymap = result;
+            afterRead();
         }
     }
 }
@@ -150,9 +167,3 @@ function sendComment() {
 }
 
 document.getElementById("submit-report").addEventListener("click", sendComment);
-
-
-
-
-
-

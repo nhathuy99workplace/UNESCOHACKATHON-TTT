@@ -2,9 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var errorHandler = require("../errorHandler/controllerError");
 
-
 __dirname = path.join(__dirname, '../../')
-console.log(__dirname)
 
 function serveCss(request, response) {
     if (request.url.match("\.css$")) {

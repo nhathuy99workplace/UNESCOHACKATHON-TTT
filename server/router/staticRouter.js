@@ -1,6 +1,7 @@
 var utilities = require("../utilities/utilities");
 var path = require('path');
 var serve = require("../controller/staticController");
+
 __dirname = path.join(__dirname, '../../')
 
 var routeFile = [
@@ -8,6 +9,7 @@ var routeFile = [
         routeFileName: "/client/polution.html"},
 ];
 
+//Routing file request
 module.exports = function fileRouter(url, request, response) {
     var check404 = true;
     var routeId = routeFile.findIndex(item => item.routeUrl === url);

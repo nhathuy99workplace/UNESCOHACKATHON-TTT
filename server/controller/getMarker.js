@@ -3,7 +3,7 @@ var utilities = require("../utilities/utilities");
 var errorHandler = require("../errorHandler/controllerError");
 
 module.exports = function(request, response) {
-    try{
+    try {
         crud.readDatabase("marker", function(product) {
             utilities.setResponseHeader(response);
            response.end(JSON.stringify(product));
