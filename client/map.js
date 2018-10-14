@@ -1,7 +1,6 @@
 var map;
 var currentMark;
-debugger
-if (localStorage.getItem("currentMark")) {
+if (localStorage.getItem("currentMark") !== "[{}]" && localStorage.getItem("currentMark")) {
     currentMark = JSON.parse(localStorage.getItem("currentMark"))[0];
 } 
 else {
@@ -125,10 +124,12 @@ function afterRead() {
             for (var i in listComment) {
                 addComment(listComment[i], "description");
             }
-            var temp = {
-                lat: this.center.lat,
-                lng: this.center.lng
-            }
+            var lat1 = this.get("center").lat();
+            var lng1 = this.get("center").lng();
+            var temp = {};
+            temp.lat = lat1;
+            temp.lng = lng1;
+            currentMark = temp;
             var obj = []
             obj.push(temp);
             localStorage.setItem("currentMark", JSON.stringify(obj));
