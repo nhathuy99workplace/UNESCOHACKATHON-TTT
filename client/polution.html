@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Polution map</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <link href='https://fonts.googleapis.com/css?family=Architects Daughter' rel='stylesheet'>
+        <link rel="stylesheet" type="text/css" href="../client/polution.css">
+        <link rel="stylesheet" type="text/css" href="../client/responsive-design/build-column.css">
+        <link rel="stylesheet" type="text/css" href="../client/responsive-design/off-set.css">
+    </head>
+    <body>  
+        <div class="header">
+            <div id="app-name" class="app-name">Pmaps</div>
+        </div>
+        <div class="container">
+            <div class="maps cl-lg-9">
+                <div id="map"></div>
+                <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+            </div>
+            <div class="interact-user cl-lg-3">
+                <div class="report">
+                    <div class="info-bar">
+                        <label class="property cl-xs-12">Description : </label>
+                        <textarea class="user-input cl-xs-12" id="user-description"></textarea>
+                        <!-- <div class="cl-xs-12">
+                            <input class="user-input cl-xs-12" id="user-description"> 
+                        </div> -->
+                    </div>
+                </div>
+                <button id="submit-report" class="submit-report">Send report</button>
+                <div class="report-container">
+                    <div class="user-report cl-xs-12"> 
+                        <h4>Relatives :</h4>
+                        <!-- <div class="user-info cl-xs-12">
+                            <div class="avatar cl-xs-2"></div>
+                            <div class="username cl-xs-10"></div>
+                        </div> -->
+                        <div id="description">   
+                            <!-- comment here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="footer"></div> -->
+    </body>
+    <!-- <script src = "../client/createDatabase.js"></script> -->
+    <script src = "../client/map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7Mcc8eliMxa1eOB3zrY_p3RoIrW-NdXM&libraries=places&callback=initMap"></script>
+</html>

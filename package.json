@@ -1,0 +1,25 @@
+{
+  "name": "snack-order",
+  "version": "1.0.0",
+  "description": "All things is mentioned in Snack Order release note",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SmithWinter/Snack-Order.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SmithWinter/Snack-Order/issues"
+  },
+  "homepage": "https://github.com/SmithWinter/Snack-Order#readme",
+  "dependencies": {
+    "mongodb": "^3.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
