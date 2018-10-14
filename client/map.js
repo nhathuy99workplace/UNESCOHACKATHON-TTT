@@ -35,27 +35,7 @@ function initMap() {
         center: {lat: 10.7624165, lng: 106.6812013},
         zoom: 13
     });
-    for (var city in citymap) {
-        var cityCircle = new google.maps.Circle({
-          strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
-          strokeWeight: 2,
-          fillColor: '#FF0000',
-          fillOpacity: callOpa(citymap[city].commentQuantity),
-          title: citymap[city].comment,
-          map: map,
-          center: citymap[city].center,
-          radius: 200
-        });
-        cityCircle.addListener("click",function(){
-            var listComment = this.get("title");
-            delComment("description");
-            
-            for (var i in listComment) {
-                addComment(listComment[i], "description");
-            }
-        });
-    }
+    
     var input = document.getElementById('pac-input');   
     var searchBox = new google.maps.places.SearchBox(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
@@ -116,6 +96,30 @@ function initMap() {
 
 }
 
+function afterRead() {
+    for (var city in citymap) {
+        var cityCircle = new google.maps.Circle({
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#FF0000',
+          fillOpacity: callOpa(citymap[city].commentQuantity),
+          title: citymap[city].comment,
+          map: map,
+          center: citymap[city].center,
+          radius: 200
+        });
+        cityCircle.addListener("click",function(){
+            var listComment = this.get("title");
+            delComment("description");
+            
+            for (var i in listComment) {
+                addComment(listComment[i], "description");
+            }
+        });
+    }
+}
+
 function getData() {
     var http = new XMLHttpRequest();
     http.open("GET", "http://127.0.0.1:3000/get-data", true);
@@ -124,6 +128,8 @@ function getData() {
         if (this.readyState == 4 && this.status == 200){
             var result = JSON.parse(this.response);
             citymap =result;
+            afterRead();
+            debugger
             // console.log(citymap);
         }
     }

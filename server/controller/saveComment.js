@@ -7,7 +7,6 @@ var utilities = require('../utilities/utilities');
 
 function saveComment(request, response, locationArray) {
     utilities.collectDataFromPost(request, result => {
-        console.log(result);
         var check = false;
         debugger;
         for (var i in locationArray) {

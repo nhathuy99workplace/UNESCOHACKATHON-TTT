@@ -15,6 +15,18 @@ body {
     height: 70px;
     width: 100%;
 }
+.header {
+    text-align: center;
+}
+
+.app-name {
+    display: block;
+    width: auto;
+    height: 100%;
+    font-size: 51px;
+    margin: auto;
+}
+
 .container {
     z-index: 1;
     position: relative;
