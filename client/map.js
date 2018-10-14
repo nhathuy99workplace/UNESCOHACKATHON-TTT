@@ -125,9 +125,12 @@ function afterRead() {
             for (var i in listComment) {
                 addComment(listComment[i], "description");
             }
-            currentMark = this.center; 
+            var temp = {
+                lat: this.center.lat,
+                lng: this.center.lng
+            }
             var obj = []
-            obj.push(currentMark);
+            obj.push(temp);
             localStorage.setItem("currentMark", JSON.stringify(obj));
         });
     }
